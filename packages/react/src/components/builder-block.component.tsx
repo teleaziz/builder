@@ -10,6 +10,7 @@ import {
   BuilderAsyncRequestsContext,
   RequestOrPromise
 } from '../store/builder-async-requests'
+import { useBlocksMap } from '../store/blocks-maps-provider'
 import { BuilderStoreContext } from '../store/builder-store'
 import { applyPatchWithMinimalMutationChain } from 'src/functions/apply-patch-with-mutation'
 import { blockToHtmlString } from 'src/functions/block-to-html-string'
@@ -95,9 +96,11 @@ function mapToCss(map: StringMap, spaces = 2, important = false) {
   }, '')
 }
 
-export interface BuilderBlockProps {
+export interface BaseBuilderBlockProps {
   fieldName?: string
   block: BuilderElement
+  blockId?: undefined
+  onChange?: (block: BuilderElement) => any
   // TODO:
   // block: BuilderElement
   child?: boolean
@@ -114,15 +117,15 @@ function capitalize(str: string) {
   return str[0].toUpperCase() + str.slice(1)
 }
 
-interface BuilderBlockState {
+interface BaseBuilderBlockState {
   state: any
   rootState: any
   context: any
   update: Function
 }
 
-export class BuilderBlock extends React.Component<
-  BuilderBlockProps,
+export class BaseBuilderBlock extends React.Component<
+  BaseBuilderBlockProps,
   { hasError: boolean; updates: number }
 > {
   private _asyncRequests?: RequestOrPromise[]
@@ -134,7 +137,7 @@ export class BuilderBlock extends React.Component<
     updates: 0
   }
 
-  private privateState: BuilderBlockState = {
+  private privateState: BaseBuilderBlockState = {
     state: {},
     rootState: {},
     context: {},
@@ -376,7 +379,14 @@ export class BuilderBlock extends React.Component<
           // e.g. access it's parent hm. maybe do the listning mutations
           // on hte parent element not the child (or rather
           // send the message to the parent)
-          applyPatchWithMinimalMutationChain(this.props.block, patch)
+          const newBlock = applyPatchWithMinimalMutationChain(
+            this.props.block,
+            patch,
+            !this.props.onChange
+          )
+          if (this.props.onChange) {
+            this.props.onChange(newBlock)
+          }
         }
         this.setState({ updates: this.state.updates + 1 })
 
@@ -694,9 +704,9 @@ export class BuilderBlock extends React.Component<
                           children.length
                         ? children.map((block: ElementType, index: number) => (
                             <BuilderBlock
-                              key={((this.id as string) || '') + index}
+                              key={block.id + index}
+                              blockId={block.id}
                               block={block}
-                              index={index}
                               size={this.props.size}
                               fieldName={this.props.fieldName}
                               child={this.props.child}
@@ -724,7 +734,7 @@ export class BuilderBlock extends React.Component<
     return block.id!
   }
 
-  contents(state: BuilderBlockState) {
+  contents(state: BaseBuilderBlockState) {
     const { block } = this.props
 
     // this.setState(state);
@@ -801,4 +811,28 @@ export class BuilderBlock extends React.Component<
       </BuilderStoreContext.Consumer>
     )
   }
+}
+
+export interface BuilderBlockProps
+  extends Omit<BaseBuilderBlockProps, 'onChange' | 'block'> {
+  blockId: any
+  block?: BuilderElement
+}
+
+export const BuilderBlock: React.FC<
+  BuilderBlockProps | BaseBuilderBlockProps
+> = ({ blockId, ...props }) => {
+  const context = useBlocksMap()
+  if (context && blockId) {
+    return (
+      <BaseBuilderBlock
+        {...props}
+        onChange={context.onBlockChange}
+        block={context.blocksMap[blockId]}
+      ></BaseBuilderBlock>
+    )
+  } else if (typeof props.block !== 'undefined') {
+    return <BaseBuilderBlock {...(props as any)} />
+  }
+  throw new Error('Neither Context or object passed to BuilderBlock')
 }

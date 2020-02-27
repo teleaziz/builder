@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import { Builder } from '@builder.io/sdk'
 import { BuilderBlock } from './builder-block.component'
+import { BlocksMapProvider } from '../store/blocks-maps-provider'
 // TODO: fetch these for user and send them with same response like graphql
 import { Size } from '../constants/device-sizes.constant'
 
@@ -71,6 +72,29 @@ export class BuilderBlocks extends React.Component<BuilderBlocksProps, BuilderBl
     }
   }
 
+  renderBlocks(blocks: any[]) {
+    return <BlocksMapProvider blocks={blocks}>
+      {
+        blocks.map(
+          (block, index) =>
+            block && block['@type'] === '@builder.io/sdk:Element' ? (
+              <BuilderBlock
+                key={block.id}
+                blockId={block.id}
+                index={index}
+                fieldName={this.props.fieldName}
+                child={this.props.child}
+                emailMode={this.props.emailMode}
+              />
+            ) : (
+              block
+            )
+        )
+      }
+
+    </BlocksMapProvider>
+  }
+
   // <!-- Builder Blocks --> in comments hmm
   render() {
     const { blocks } = this.props
@@ -107,24 +131,7 @@ export class BuilderBlocks extends React.Component<BuilderBlocksProps, BuilderBl
       >
         {/* TODO: if is react node (for react compatibility) render it */}
         {/* TODO: maybe don't do this to preserve blocks always editable */}
-        {(blocks &&
-          Array.isArray(blocks) &&
-          (blocks as any[]).map(
-            (block, index) =>
-              block && block['@type'] === '@builder.io/sdk:Element' ? (
-                <BuilderBlock
-                  key={block.id}
-                  block={block}
-                  index={index}
-                  fieldName={this.props.fieldName}
-                  child={this.props.child}
-                  emailMode={this.props.emailMode}
-                />
-              ) : (
-                block
-              )
-          )) ||
-          blocks}
+        {(blocks && Array.isArray(blocks) && this.renderBlocks(blocks)) ||  blocks}
       </TagName>
     )
   }
