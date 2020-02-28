@@ -27,7 +27,10 @@ interface BuilderBlocksState {
 }
 
 // TODO: options to set direciotn
-export class BuilderBlocks extends React.Component<BuilderBlocksProps, BuilderBlocksState> {
+export class BuilderBlocks extends React.Component<
+  BuilderBlocksProps,
+  BuilderBlocksState
+> {
   get isRoot() {
     return !this.props.child
   }
@@ -73,26 +76,24 @@ export class BuilderBlocks extends React.Component<BuilderBlocksProps, BuilderBl
   }
 
   renderBlocks(blocks: any[]) {
-    return <BlocksMapProvider blocks={blocks}>
-      {
-        blocks.map(
-          (block, index) =>
-            block && block['@type'] === '@builder.io/sdk:Element' ? (
-              <BuilderBlock
-                key={block.id}
-                blockId={block.id}
-                index={index}
-                fieldName={this.props.fieldName}
-                child={this.props.child}
-                emailMode={this.props.emailMode}
-              />
-            ) : (
-              block
-            )
-        )
-      }
-
-    </BlocksMapProvider>
+    return (
+      <BlocksMapProvider blocks={blocks}>
+        {blocks.map((block, index) =>
+          block && block['@type'] === '@builder.io/sdk:Element' ? (
+            <BuilderBlock
+              key={block.id}
+              blockId={block.id}
+              index={index}
+              fieldName={this.props.fieldName}
+              child={this.props.child}
+              emailMode={this.props.emailMode}
+            />
+          ) : (
+            block
+          )
+        )}
+      </BlocksMapProvider>
+    )
   }
 
   // <!-- Builder Blocks --> in comments hmm
@@ -131,7 +132,8 @@ export class BuilderBlocks extends React.Component<BuilderBlocksProps, BuilderBl
       >
         {/* TODO: if is react node (for react compatibility) render it */}
         {/* TODO: maybe don't do this to preserve blocks always editable */}
-        {(blocks && Array.isArray(blocks) && this.renderBlocks(blocks)) ||  blocks}
+        {(blocks && Array.isArray(blocks) && this.renderBlocks(blocks)) ||
+          blocks}
       </TagName>
     )
   }
