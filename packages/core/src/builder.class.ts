@@ -595,10 +595,9 @@ export class Builder {
    * Makes it so that a/b tests generate code like {@link
    * https://www.builder.io/blog/high-performance-no-code#__next:~:text=Static%20generated%20A%2FB%20testing}
    * instead of the old way where we render only one test group at a time on the
-   * server. This is the preferred/better way not and we should ultimately make it
-   * the default
+   * server.
    */
-  static isStatic = false;
+  static isStatic = true;
   static animator = new Animator();
 
   static nextTick = nextTick;
