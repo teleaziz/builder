@@ -31,6 +31,16 @@ import { throttle } from '../functions/throttle';
 import { safeDynamicRequire } from '../functions/safe-dynamic-require';
 import { BuilderMetaContext } from '../store/builder-meta';
 
+let vmModule: any = null;
+
+if (Builder.isServer) {
+  try {
+    vmModule = require('vm2');
+  } catch (e) {
+    console.warn(`couldn't load vm2 `, e);
+  }
+}
+
 function pick<T, K extends keyof T>(obj: T, ...keys: K[]): Pick<T, K> {
   const ret: any = {};
   keys.forEach(key => {
@@ -73,11 +83,11 @@ const size = (thing: object) => Object.keys(thing).length;
 
 function debounce(func: Function, wait: number, immediate = false) {
   let timeout: any;
-  return function(this: any) {
+  return function (this: any) {
     const context = this;
     const args = arguments;
     clearTimeout(timeout);
-    timeout = setTimeout(function() {
+    timeout = setTimeout(function () {
       timeout = null;
       if (!immediate) func.apply(context, args);
     }, wait);
@@ -347,7 +357,7 @@ const tryEval = (str?: string, data: any = {}, errors?: Error[]): any => {
       // browser bundler's like rollup and webpack. Our rollup plugin strips these comments only
       // for the server build
       // tslint:disable:comment-format
-      const { VM } = safeDynamicRequire('vm2');
+      const { VM } = vmModule || safeDynamicRequire('vm2');
       return new VM({
         sandbox: {
           ...data,
@@ -1091,7 +1101,7 @@ export class BuilderComponent extends React.Component<
                           const useBuilderState = (initialState: any) => {
                             const [, setTick] = React.useState(0);
                             const [state] = React.useState(() =>
-                              onChange(initialState, function() {
+                              onChange(initialState, function () {
                                 setTick(tick => tick + 1);
                               })
                             );

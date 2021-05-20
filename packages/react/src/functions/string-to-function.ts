@@ -1,5 +1,14 @@
 import { Builder, builder } from '@builder.io/sdk';
-import { safeDynamicRequire } from './safe-dynamic-require';
+
+let vmModule: any = null;
+
+if (Builder.isServer) {
+  try {
+    vmModule = require('vm2');
+  } catch (e) {
+    console.warn(`couldn't load vm2 `, e);
+  }
+}
 
 const fnCache: { [key: string]: BuilderEvanFunction | undefined } = {};
 
@@ -118,7 +127,7 @@ export function stringToFunction(
         // for the server build
         // TODO: cache these for better performancs with new VmScript
         // tslint:disable:comment-format
-        const { VM } = safeDynamicRequire('vm2');
+        const { VM } = vmModule;
         const [state, event] = args;
         return new VM({
           timeout: 100,
