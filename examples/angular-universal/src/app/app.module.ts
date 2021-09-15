@@ -14,7 +14,7 @@ Builder.isStatic = true;
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-app' }),
     AppRoutingModule,
-    BuilderModule.forRoot('db4da7332ae64a96b056ed574578485a'),
+    BuilderModule.forRoot('e2518d0087574282b70c58150753d371'),
   ],
   providers: [],
   bootstrap: [AppComponent],
