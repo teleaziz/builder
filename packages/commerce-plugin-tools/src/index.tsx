@@ -62,8 +62,9 @@ export const registerCommercePlugin = async (
         api: apiOperations,
       };
       Builder.register('editor.onLoad', onEditorLoad(config, apiOperations, resourceName));
+      const resourceType = `${config.name}${capitalize(resourceName)}`;
       Builder.registerEditor({
-        name: `${config.name}${capitalize(resourceName)}`,
+        name: resourceType,
         isDataResource: true,
         pluginId: config.id,
         component: (props: ResourcesPickerButtonProps) => (
@@ -73,8 +74,29 @@ export const registerCommercePlugin = async (
         ),
       });
 
+      Builder.register(`resource${config.id}`, {
+        pluginId: config.id,
+        name: resourceName,
+        inputs: [
+          {
+            name: resourceName,
+            type: resourceType
+          }
+        ],
+        toUrl: (options: any) => {
+          console.log(options);
+          return options.request?.url;
+        },
+        getCustomHeaders: (options: any) => {
+          console.log(options);
+          return options.request?.headers;
+        }
+      });
+
+
       Builder.registerEditor({
         name: `${config.name}${capitalize(resourceName)}Preview`,
+        pluginId: config.id,
         component: (props: ResourcesPickerButtonProps) => (
           <ErrorBoundary>
             <ResourcesPickerButton
@@ -90,6 +112,7 @@ export const registerCommercePlugin = async (
       if (apiOperations[resourceName].findByHandle) {
         Builder.registerEditor({
           name: `${config.name}${capitalize(resourceName)}Handle`,
+          pluginId: config.id,
           component: (props: ResourcesPickerButtonProps) => (
             <ErrorBoundary>
               <ResourcesPickerButton {...props} {...contextProps} handleOnly />
@@ -100,6 +123,7 @@ export const registerCommercePlugin = async (
 
       Builder.registerEditor({
         name: `${config.name}${capitalize(pluralize.plural(resourceName))}List`,
+        pluginId: config.id,
         component: (props: PickResourceListProps) => (
           <ErrorBoundary>
             <PickResourcesListButton {...props} {...contextProps} />
