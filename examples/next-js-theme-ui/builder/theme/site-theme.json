@@ -8,15 +8,15 @@
       "primary": "rgba(34, 28, 28, 1)"
     },
     "siteInformation": {
-      "description": "A starter kit demo store for using headless shopify with Builder.io ->  https://github.com/BuilderIO/nextjs-shopify",
+      "description": "A starter kit for theming Builder.io landing pages with ThemeUI",
       "openGraph": {
         "locale": "en_IE",
-        "site_name": "Builder.io + Next.js + Shopify Demo",
+        "site_name": "Theming Builder.io + Next.js",
         "type": "website",
-        "url": "https://github.com/BuilderIO/nextjs-shopify"
+        "url": "https://github.com/BuilderIO/builder/examples/next-js-theme-ui"
       },
-      "title": "Builder.io + Next-js + Shopify Demo",
-      "titleTemplate": "%s - Headless Demo"
+      "title": "Builder.io + Next.js + ThemeUI Demo",
+      "titleTemplate": "%s - Theming Demo"
     },
     "siteSettings": {
       "logo": {

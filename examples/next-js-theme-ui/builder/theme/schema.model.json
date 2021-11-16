@@ -30,7 +30,7 @@
   "allowTests": true,
   "hidden": false,
   "publicReadable": true,
-  "examplePageUrl": "https://headless.builders",
+  "examplePageUrl": "http://localhost:3000",
   "getSchemaFromPage": false,
   "componentsOnlyMode": false,
   "injectWcPosition": "",
