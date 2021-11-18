@@ -5,7 +5,7 @@ const bundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = bundleAnalyzer({
   target: 'serverless',
   images: {
-    domains: ['cdn.shopify.com', 'cdn.builder.io', 'via.placeholder.com'],
+    domains: ['cdn.builder.io', 'via.placeholder.com'],
   },
   async headers() {
     return [
@@ -15,7 +15,7 @@ module.exports = bundleAnalyzer({
           {
             key: 'Content-Security-Policy',
             value:
-              'frame-ancestors https://*.builder.io https://builder.io http://localhost:1234',
+              'frame-ancestors https://*.builder.io https://builder.io http://localhost:3000',
           },
         ],
       },
@@ -23,8 +23,6 @@ module.exports = bundleAnalyzer({
   },
   env: {
     // expose env to the browser
-    SHOPIFY_STOREFRONT_API_TOKEN: process.env.SHOPIFY_STOREFRONT_API_TOKEN,
-    SHOPIFY_STORE_DOMAIN: process.env.SHOPIFY_STORE_DOMAIN,
     BUILDER_PUBLIC_KEY: process.env.BUILDER_PUBLIC_KEY,
     IS_DEMO: process.env.IS_DEMO,
   },

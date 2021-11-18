@@ -11,7 +11,7 @@
       "description": "A starter kit for theming Builder.io landing pages with ThemeUI",
       "openGraph": {
         "locale": "en_IE",
-        "site_name": "Theming Builder.io + Next.js",
+        "site_name": "Builder.io + Next.js + ThemeUI Demo",
         "type": "website",
         "url": "https://github.com/BuilderIO/builder/examples/next-js-theme-ui"
       },
@@ -20,7 +20,7 @@
     },
     "siteSettings": {
       "logo": {
-        "text": "Headless"
+        "text": "Logo"
       },
       "navigationLinks": [
         {

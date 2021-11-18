@@ -18,7 +18,7 @@ The ultimate starter for themeable landing pages.
       - [2: Your Builder.io private key](#2-your-builderio-private-key)
       - [3: Clone this repository and initialize a Builder.io space](#3-clone-this-repository-and-initialize-a-builderio-space)
       - [3. Up and Running!](#3-up-and-running)
-  - [Deploy](#deploy)
+  <!-- - [Deploy](#deploy) -->
   - [What's Inside](#whats-inside)
 
 <!-- markdown-toc end -->
@@ -76,8 +76,8 @@ in the previous step, and change `<space-name>` to something that's
 meaningful to you -- don't worry, you can change it later!
 
 ```
-git clone https://github.com/BuilderIO/nextjs-shopify.git
-cd nextjs-shopify
+git clone https://github.com/BuilderIO/builder.git
+cd builder/examples/next-js-theme-ui
 
 npm install --global "@builder.io/cli"
 
@@ -145,15 +145,15 @@ Your new space comes with a Builder data model called **Theme** which includes o
 
 `Layout.tsx` - Gets selected options from the **Theme** data model and creates a theme object. This is passed to the ThemeUI `<ThemeProvider>` to apply theme updates to pages.
 
-## Deployment Options
+<!-- ## Deployment Options
 
 You can deploy this code anywhere you like - you can find many deployment options for Next.js [here](https://nextjs.org/docs/deployment). The following options support one click installs and are super easy to start with:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fbuilderio%2Fnextjs-shopify)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fbuilderio%2Fnext-js-theme)
 
   - Vercel: for more information check [Vercel docs on Next.js deployments](https://vercel.com/docs/next.js/overview) Or try the one click install by clicking the button above.
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/BuilderIO/nextjs-shopify)
 
-- Netlify: For more information check [Netlify docs on Next.js deployments](https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/) Or try the one click install by clicking the button above.
+- Netlify: For more information check [Netlify docs on Next.js deployments](https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/) Or try the one click install by clicking the button above. -->
 

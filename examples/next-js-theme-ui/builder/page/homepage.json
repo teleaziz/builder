@@ -1969,8 +1969,7 @@
   "meta": {
     "hasLinks": false,
     "kind": "page",
-    "needsHydration": false,
-    "shopifyDomain": "builder-io-demo.myshopify.com/"
+    "needsHydration": false
   },
   "modelId": "342f3fb2e42546da8848a1585f064c30",
   "name": "homepage",
