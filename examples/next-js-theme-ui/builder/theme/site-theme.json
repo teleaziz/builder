@@ -8,19 +8,19 @@
       "primary": "rgba(34, 28, 28, 1)"
     },
     "siteInformation": {
-      "description": "A starter kit demo store for using headless shopify with Builder.io ->  https://github.com/BuilderIO/nextjs-shopify",
+      "description": "A starter kit for theming Builder.io landing pages with ThemeUI",
       "openGraph": {
         "locale": "en_IE",
-        "site_name": "Builder.io + Next.js + Shopify Demo",
+        "site_name": "Builder.io + Next.js + ThemeUI Demo",
         "type": "website",
-        "url": "https://github.com/BuilderIO/nextjs-shopify"
+        "url": "https://github.com/BuilderIO/builder/examples/next-js-theme-ui"
       },
-      "title": "Builder.io + Next-js + Shopify Demo",
-      "titleTemplate": "%s - Headless Demo"
+      "title": "Builder.io + Next.js + ThemeUI Demo",
+      "titleTemplate": "%s - Theming Demo"
     },
     "siteSettings": {
       "logo": {
-        "text": "Headless"
+        "text": "Logo"
       },
       "navigationLinks": [
         {
@@ -45,7 +45,6 @@
   "meta": {
     "kind": "data",
     "originalContentId": "2b18024cb4f24af5b3c7b7098282495a",
-    "shopifyDomain": "builder-io-demo.myshopify.com/",
     "winningTest": null
   },
   "modelId": "3d74b38795894066a351f89513cc4de9",

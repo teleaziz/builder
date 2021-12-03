@@ -30,7 +30,7 @@
   "allowTests": true,
   "hidden": false,
   "publicReadable": true,
-  "examplePageUrl": "https://headless.builders",
+  "examplePageUrl": "http://localhost:3000",
   "getSchemaFromPage": false,
   "componentsOnlyMode": false,
   "injectWcPosition": "",
@@ -481,15 +481,15 @@
       "model": "",
       "type": "object",
       "defaultValue": {
-        "description": "A starter kit demo store for using headless shopify with Builder.io ->  https://github.com/BuilderIO/nextjs-shopify",
-        "titleTemplate": "%s - Headless Demo",
+        "description": "A starter kit for theming Builder.io landing pages with ThemeUI",
+        "titleTemplate": "%s - Theming Demo",
         "openGraph": {
           "locale": "en_IE",
-          "url": "https://github.com/BuilderIO/nextjs-shopify",
+          "url": "https://github.com/BuilderIO/builder/examples/next-js-theme-ui",
           "type": "website",
-          "site_name": "Builder.io + Next.js + Shopify Demo"
+          "site_name": "Builder.io + Next.js + ThemeUI Demo"
         },
-        "title": "Builder.io + Next.js + Shopify Demo"
+        "title": "Builder.io + Next.js + ThemeUI Demo"
       },
       "bubble": false,
       "advanced": false,
@@ -505,7 +505,7 @@
           "autoFocus": false,
           "subFields": [],
           "type": "text",
-          "defaultValue": "Builder.io + Next.js + Shopify Demo",
+          "defaultValue": "Builder.io + Next.js + ThemeUI Demo",
           "model": "",
           "permissionsRequiredToEdit": "",
           "hideFromFieldsEditor": false,
@@ -538,7 +538,7 @@
           "broadcast": false,
           "subFields": [],
           "autoFocus": false,
-          "defaultValue": "%s - Headless Demo",
+          "defaultValue": "%s - Theming Demo",
           "permissionsRequiredToEdit": "",
           "copyOnAdd": true,
           "advanced": false,
@@ -563,7 +563,7 @@
           "type": "text",
           "name": "description",
           "model": "",
-          "defaultValue": "A starter kit demo store for using headless shopify with Builder.io ->  https://github.com/BuilderIO/nextjs-shopify",
+          "defaultValue": "A starter kit for theming Builder.io landing pages with ThemeUI",
           "required": false,
           "copyOnAdd": true,
           "mandatory": false,
@@ -577,9 +577,9 @@
           "mandatory": false,
           "simpleTextOnly": false,
           "defaultValue": {
-            "url": "https://github.com/BuilderIO/nextjs-shopify",
+            "url": "https://github.com/BuilderIO/builder/examples/next-js-theme-ui",
             "type": "website",
-            "site_name": "Builder.io + Next.js + Shopify Demo",
+            "site_name": "Builder.io + Next.js + ThemUI Demo",
             "locale": "en_IE"
           },
           "hideFromFieldsEditor": false,

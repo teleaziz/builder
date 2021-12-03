@@ -1,14 +1,13 @@
 
-# Next.js + Builder.io starter kit
+# Themeable Next.js + Builder.io starter kit
 
-The ultimate starter for Themeable public landing pages . 
+The ultimate starter for themeable landing pages. 
 
 ## Goals and Features
 
 - Ultra high performance
 - SEO optimized
-- Themable
-- Personalizable (internationalization, a/b testing, etc)
+- Themable pages
 - Builder.io Visual CMS integrated
 
 
@@ -19,7 +18,8 @@ The ultimate starter for Themeable public landing pages .
       - [2: Your Builder.io private key](#2-your-builderio-private-key)
       - [3: Clone this repository and initialize a Builder.io space](#3-clone-this-repository-and-initialize-a-builderio-space)
       - [3. Up and Running!](#3-up-and-running)
-  - [Deploy](#deploy)
+  <!-- - [Deploy](#deploy) -->
+  - [What's Inside](#whats-inside)
 
 <!-- markdown-toc end -->
 
@@ -34,18 +34,15 @@ This guide will assume that you have the following software installed:
 - npm or yarn
 - git
 
-You should already have a [Shopify](https://www.shopify.com/online-store) account and store created before starting as well. 
-
 **Introduction**
 
 This starter kit is everything you need to get your own self hosted
-Next.js project powered by Builder.io for content and Shopify as an
-e-commerce back office.
+Next.js project themed with ThemeUI and powered by Builder.io for content. Read more about the ThemeUI library [here](https://theme-ui.com/).
 
 After following this guide you will have
 
 - A Next.js app, ready to deploy to a hosting provider of your choice
-- Powered by the Builder.io visual CMS
+- Theming powered by the Builder.io visual CMS and ThemeUI
 
 ### 1: Create an account for Builder.io
 
@@ -79,8 +76,8 @@ in the previous step, and change `<space-name>` to something that's
 meaningful to you -- don't worry, you can change it later!
 
 ```
-git clone https://github.com/BuilderIO/nextjs-shopify.git
-cd nextjs-shopify
+git clone https://github.com/BuilderIO/builder.git
+cd builder/examples/next-js-theme-ui
 
 npm install --global "@builder.io/cli"
 
@@ -104,7 +101,7 @@ created.*
 |████████████████████████████████████████| page: writing homepage.json | 2/2
 
 
-Your new space "next.js shopify starter" public API Key: 012345abcdef0123456789abcdef0123
+Your new space "next.js themed starter" public API Key: 012345abcdef0123456789abcdef0123
 ```
 
 Copy the public API key ("012345abcdef0123456789abcdef0123" in the example above) for the next step.
@@ -121,7 +118,7 @@ You can ignore the other variables for now, we'll set them later.
 ```
 
 
-### 3. Up and Running!
+### 4. Up and Running!
 
 The hard part is over, all you have to do is start up the project now.
 
@@ -139,18 +136,26 @@ Go to your [new space settings](https://builder.io/account/space) and change the
 <!-- that's intially published is hard coded to the collections on the demo store -->
 <!-- and won' work out of the box. -->
 
-### 8. Start building
-Now that we have everything setup, start building and publishing pages on builder.io, for a demo on building something similar to the [demo homepage](https://headless.builders), follow the steps in this [short video](https://www.loom.com/share/9b947acbbf714ee3ac6c319c130cdb85)
+### 5. Start building
+Now that we have everything setup, start building and publishing pages on builder.io!
 
-## Deployment Options
+## What's Inside
+
+Your new space comes with a Builder data model called **Theme** which includes options for changing the site's theme (using ThemeUI presets) and overriding colors and fonts.
+
+`Layout.tsx` - Gets selected options from the **Theme** data model and creates a theme object. This is passed to the ThemeUI `<ThemeProvider>` to apply theme updates to pages.
+
+`Navbar.tsx`, `[[...path]].tsx` - Use the `data` option to pass your theme object to `<BuilderComponent>` and make your styles accessible in Builder's state. Then head to Builder's visual editor and navigate to the **Data** tab to bind your component's style properties to your theme styles.
+
+<!-- ## Deployment Options
 
 You can deploy this code anywhere you like - you can find many deployment options for Next.js [here](https://nextjs.org/docs/deployment). The following options support one click installs and are super easy to start with:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fbuilderio%2Fnextjs-shopify)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fbuilderio%2Fnext-js-theme)
 
   - Vercel: for more information check [Vercel docs on Next.js deployments](https://vercel.com/docs/next.js/overview) Or try the one click install by clicking the button above.
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/BuilderIO/nextjs-shopify)
 
-- Netlify: For more information check [Netlify docs on Next.js deployments](https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/) Or try the one click install by clicking the button above.
+- Netlify: For more information check [Netlify docs on Next.js deployments](https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/) Or try the one click install by clicking the button above. -->
 

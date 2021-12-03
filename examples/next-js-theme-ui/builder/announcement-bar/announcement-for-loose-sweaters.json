@@ -82,8 +82,7 @@
   "meta": {
     "hasLinks": false,
     "kind": "component",
-    "needsHydration": false,
-    "shopifyDomain": "builder-io-demo.myshopify.com/"
+    "needsHydration": false
   },
   "modelId": "e4524251f0ac41ec948df38d39a88efc",
   "name": "announcement for loose sweaters",

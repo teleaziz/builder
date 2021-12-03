@@ -1,6 +1,5 @@
 {
   "settings": {
-    "editorShowShopifyBlocks": false,
     "showSitePreviewTab": false,
     "allowBuiltInComponents": true,
     "reloadPreviewForMobile": false,
