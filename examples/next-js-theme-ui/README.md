@@ -145,6 +145,8 @@ Your new space comes with a Builder data model called **Theme** which includes o
 
 `Layout.tsx` - Gets selected options from the **Theme** data model and creates a theme object. This is passed to the ThemeUI `<ThemeProvider>` to apply theme updates to pages.
 
+`Navbar.tsx`, `[[...path]].tsx` - Use the `data` option to pass your theme object to `<BuilderComponent>` and make your styles accessible in Builder's state. Then head to Builder's visual editor and navigate to the **Data** tab to bind your component's style properties to your theme styles.
+
 <!-- ## Deployment Options
 
 You can deploy this code anywhere you like - you can find many deployment options for Next.js [here](https://nextjs.org/docs/deployment). The following options support one click installs and are super easy to start with:
